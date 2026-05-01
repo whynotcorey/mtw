@@ -1,0 +1,1035 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1a1a1a" />
+<title>Hymn Sing — Christian Retreat</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --accent: #5b3a29;
+    --rule: #e2ddd2;
+    --max: 720px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 1rem;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 1.25rem 1.1rem 4rem;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header.top {
+    text-align: center;
+    padding: 1.5rem 0 1rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 1.5rem;
+  }
+  header.top h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.25rem;
+  }
+  header.top p.subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  /* Index */
+  nav.index {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  nav.index h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  ol.index-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: hymn;
+  }
+  ol.index-list li {
+    counter-increment: hymn;
+    border-bottom: 1px solid var(--rule);
+  }
+  ol.index-list li:last-child { border-bottom: none; }
+  ol.index-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 1.05rem;
+    min-height: 44px; /* mobile tap target */
+  }
+  ol.index-list li a::before {
+    content: counter(hymn);
+    flex-shrink: 0;
+    width: 1.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  ol.index-list li a:hover,
+  ol.index-list li a:focus {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  /* Songs */
+  section.song {
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: 1rem;
+  }
+  section.song:first-of-type {
+    border-top: none;
+    margin-top: 0;
+  }
+
+  h2.song-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: clamp(1.5rem, 5vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+  }
+
+  .stanza {
+    margin: 0 0 1.4rem;
+  }
+
+  .section-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 0.45rem;
+  }
+
+  .lyric-line {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .stanza.chorus {
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--rule);
+  }
+  .stanza.chorus .section-label {
+    color: var(--accent);
+  }
+
+  .back-to-top {
+    margin: 1.75rem 0 0;
+    text-align: right;
+    font-size: 0.9rem;
+  }
+  .back-to-top a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.5;
+  }
+  .back-to-top a:hover,
+  .back-to-top a:focus {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14130f;
+      --ink: #ece8e0;
+      --muted: #9c958a;
+      --accent: #d4a574;
+      --rule: #2c2a25;
+    }
+    nav.index { background: #1c1b17; }
+  }
+
+  /* Larger phones / tablets */
+  @media (min-width: 600px) {
+    body { font-size: 19px; padding: 2rem 1.5rem 5rem; }
+    .lyric-line { font-size: 1.1rem; line-height: 1.6; }
+  }
+
+  /* Print: clean, single-column, no nav */
+  @media print {
+    :root { --bg: #fff; --ink: #000; --muted: #444; --rule: #ccc; }
+    body { font-size: 11pt; padding: 0; }
+    nav.index, .back-to-top { display: none; }
+    section.song { page-break-before: always; border-top: none; }
+    section.song:first-of-type { page-break-before: auto; }
+  }
+</style>
+</head>
+<body>
+  <a id="top"></a>
+  <div class="wrap">
+    <header class="top">
+      <h1>Hymn Sing</h1>
+      <p class="subtitle">Christian Retreat</p>
+    </header>
+
+    <nav class="index" aria-label="Hymn index">
+      <h2>Index</h2>
+      <ol class="index-list">
+        <li><a href="#a-mighty-fortress-is-our-god">A Mighty Fortress Is Our God</a></li>
+        <li><a href="#abide-with-me">Abide With Me</a></li>
+        <li><a href="#all-creatures-of-our-god-and-king">All Creatures Of Our God And King</a></li>
+        <li><a href="#be-thou-my-vision">Be Thou My Vision</a></li>
+        <li><a href="#before-the-throne-of-god-above">Before The Throne Of God Above</a></li>
+        <li><a href="#beneath-the-cross-of-jesus">Beneath The Cross Of Jesus</a></li>
+        <li><a href="#come-thou-fount-of-every-blessing">Come Thou Fount Of Every Blessing</a></li>
+        <li><a href="#come-ye-sinners-poor-and-needy">Come Ye Sinners, Poor And Needy</a></li>
+        <li><a href="#crown-him-with-many-crowns">Crown Him With Many Crowns</a></li>
+        <li><a href="#great-is-thy-faithfulness">Great Is Thy Faithfulness</a></li>
+        <li><a href="#how-great-thou-art">How Great Thou Art</a></li>
+        <li><a href="#how-marvelous-i-stand-amazed">How Marvelous (I Stand Amazed)</a></li>
+        <li><a href="#it-is-well-with-my-soul">It Is Well With My Soul</a></li>
+        <li><a href="#jesus-i-my-cross-have-taken">Jesus, I My Cross Have Taken</a></li>
+        <li><a href="#leaning-on-the-everlasting-arms">Leaning On The Everlasting Arms</a></li>
+        <li><a href="#nothing-but-the-blood">Nothing But The Blood</a></li>
+        <li><a href="#praise-to-the-lord-the-almighty">Praise To The Lord, The Almighty</a></li>
+        <li><a href="#there-is-power-in-the-blood">There Is Power In The Blood</a></li>
+      </ol>
+    </nav>
+
+    <main>
+<section class="song" id="a-mighty-fortress-is-our-god">
+  <h2 class="song-title">A Mighty Fortress Is Our God</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">A mighty fortress is our God, a bulwark never failing;</p>
+    <p class="lyric-line">Our helper He amid the flood of mortal ills prevailing.</p>
+    <p class="lyric-line">For still our ancient foe doth seek to work us woe;</p>
+    <p class="lyric-line">His craft and power are great, and armed with cruel hate,</p>
+    <p class="lyric-line">On earth is not his equal.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Did we in our own strength confide, our striving would be losing,</p>
+    <p class="lyric-line">Were not the right Man on our side, the Man of God&#x27;s own choosing.</p>
+    <p class="lyric-line">You ask who that may be? Christ Jesus, it is He;</p>
+    <p class="lyric-line">Lord God of hosts, His name, from age to age the same,</p>
+    <p class="lyric-line">And He must win the battle.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">And though this world, with devils filled, should threaten to undo us,</p>
+    <p class="lyric-line">We will not fear, for God has willed His truth to triumph through us.</p>
+    <p class="lyric-line">The prince of darkness grim, we tremble not for him;</p>
+    <p class="lyric-line">His rage we can endure, for lo, his doom is sure;</p>
+    <p class="lyric-line">One little word shall fell him.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">That word above all earthly powers, no thanks to them, abideth;</p>
+    <p class="lyric-line">The Spirit and the gifts are ours through Him who with us sideth.</p>
+    <p class="lyric-line">Let goods and kindred go, this mortal life also;</p>
+    <p class="lyric-line">The body they may kill: God&#x27;s truth abideth still;</p>
+    <p class="lyric-line">His kingdom is forever.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="abide-with-me">
+  <h2 class="song-title">Abide With Me</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Abide with me; fast falls the eventide;</p>
+    <p class="lyric-line">The darkness deepens; Lord, with me abide.</p>
+    <p class="lyric-line">When other helpers fail and comforts flee,</p>
+    <p class="lyric-line">Help of the helpless, abide with me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Thou on my head, in early youth didst smile,</p>
+    <p class="lyric-line">And though rebellious, and perverse meanwhile,</p>
+    <p class="lyric-line">Thou hast not left me, though I oft left Thee,</p>
+    <p class="lyric-line">On to the close, Lord, abide with me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">I need Thy presence, every passing hour.</p>
+    <p class="lyric-line">What but Thy grace can foil the tempter&#x27;s power?</p>
+    <p class="lyric-line">Who, like Thyself, my guide and stay can be?</p>
+    <p class="lyric-line">Through cloud and sunshine, abide with me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">I fear no foe, with Thee at hand to bless;</p>
+    <p class="lyric-line">Ills have no weight, tears lose their bitterness.</p>
+    <p class="lyric-line">Where is thy sting, death? Where, grave, thy victory?</p>
+    <p class="lyric-line">I triumph still, abide with me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 5</p>
+    <p class="lyric-line">Hold Thou Thy cross before my closing eyes;</p>
+    <p class="lyric-line">Shine through the gloom and point me to the skies.</p>
+    <p class="lyric-line">Heaven&#x27;s morning breaks, and earth&#x27;s vain shadows flee;</p>
+    <p class="lyric-line">In life, in death, Lord, abide with me.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="all-creatures-of-our-god-and-king">
+  <h2 class="song-title">All Creatures Of Our God And King</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">All creatures of our God and King,</p>
+    <p class="lyric-line">Lift up your voice and with us sing,</p>
+    <p class="lyric-line">O praise Him! Alleluia!</p>
+    <p class="lyric-line">Thou burning sun with golden beam,</p>
+    <p class="lyric-line">Thou silver moon with softer gleam,</p>
+    <p class="lyric-line">O praise Him! O praise Him!</p>
+    <p class="lyric-line">Alleluia! Alleluia! Alleluia!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Thou rushing wind that art so strong,</p>
+    <p class="lyric-line">Ye clouds that sail in heaven along,</p>
+    <p class="lyric-line">O praise Him! Alleluia!</p>
+    <p class="lyric-line">Thou rising moon, in praise rejoice,</p>
+    <p class="lyric-line">Ye lights of evening, find a voice,</p>
+    <p class="lyric-line">O praise Him! O praise Him!</p>
+    <p class="lyric-line">Alleluia! Alleluia! Alleluia!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">And all ye men of tender heart,</p>
+    <p class="lyric-line">Forgiving others, take your part,</p>
+    <p class="lyric-line">O sing ye! Alleluia!</p>
+    <p class="lyric-line">Ye who long pain and sorrow bear,</p>
+    <p class="lyric-line">Praise God and on Him cast your care,</p>
+    <p class="lyric-line">O praise Him! O praise Him!</p>
+    <p class="lyric-line">Alleluia! Alleluia! Alleluia!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Let all things their Creator bless,</p>
+    <p class="lyric-line">And worship Him in humbleness,</p>
+    <p class="lyric-line">O praise Him! Alleluia!</p>
+    <p class="lyric-line">Praise, praise the Father, praise the Son,</p>
+    <p class="lyric-line">And praise the Spirit, Three in One,</p>
+    <p class="lyric-line">O praise Him! O praise Him!</p>
+    <p class="lyric-line">Alleluia! Alleluia! Alleluia!</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="be-thou-my-vision">
+  <h2 class="song-title">Be Thou My Vision</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Be Thou my vision, O Lord of my heart;</p>
+    <p class="lyric-line">Naught be all else to me, save that Thou art.</p>
+    <p class="lyric-line">Thou my best thought, by day or by night,</p>
+    <p class="lyric-line">Waking or sleeping, Thy presence my light.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Be Thou my wisdom, and Thou my true Word;</p>
+    <p class="lyric-line">I ever with Thee and Thou with me, Lord.</p>
+    <p class="lyric-line">Thou my great Father, and I Thy true son;</p>
+    <p class="lyric-line">Thou in me dwelling, and I with Thee one.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Riches I heed not, nor man&#x27;s empty praise,</p>
+    <p class="lyric-line">Thou mine inheritance, now and always.</p>
+    <p class="lyric-line">Thou and Thou only, first in my heart,</p>
+    <p class="lyric-line">High King of Heaven, my treasure Thou art.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">High King of Heaven, my victory won,</p>
+    <p class="lyric-line">May I reach heaven&#x27;s joys, O bright heaven&#x27;s Son.</p>
+    <p class="lyric-line">Heart of my own heart, whatever befall,</p>
+    <p class="lyric-line">Still be my vision, O Ruler of all.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="before-the-throne-of-god-above">
+  <h2 class="song-title">Before The Throne Of God Above</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Before the throne of God above,</p>
+    <p class="lyric-line">I have a strong and perfect plea,</p>
+    <p class="lyric-line">A great High Priest whose name is &quot;Love,&quot;</p>
+    <p class="lyric-line">Who ever lives and pleads for me.</p>
+    <p class="lyric-line">My name is graven on His hands,</p>
+    <p class="lyric-line">My name is written on His heart;</p>
+    <p class="lyric-line">I know that while in heaven He stands,</p>
+    <p class="lyric-line">No tongue can bid me thence depart,</p>
+    <p class="lyric-line">No tongue can bid me thence depart.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">When Satan tempts me to despair,</p>
+    <p class="lyric-line">And tells me of the guilt within,</p>
+    <p class="lyric-line">Upward I look and see Him there,</p>
+    <p class="lyric-line">Who made an end of all my sin.</p>
+    <p class="lyric-line">Because the sinless Savior died,</p>
+    <p class="lyric-line">My sinful soul is counted free;</p>
+    <p class="lyric-line">For God the Just is satisfied</p>
+    <p class="lyric-line">To look on Him and pardon me,</p>
+    <p class="lyric-line">To look on Him and pardon me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Behold Him there, the risen Lamb,</p>
+    <p class="lyric-line">My perfect, spotless righteousness,</p>
+    <p class="lyric-line">The great unchangeable I AM,</p>
+    <p class="lyric-line">The King of glory and of grace.</p>
+    <p class="lyric-line">One with Himself I cannot die,</p>
+    <p class="lyric-line">My soul is purchased by His blood;</p>
+    <p class="lyric-line">My life is hid with Christ on high,</p>
+    <p class="lyric-line">With Christ my Savior and my God,</p>
+    <p class="lyric-line">With Christ my Savior and my God.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="beneath-the-cross-of-jesus">
+  <h2 class="song-title">Beneath The Cross Of Jesus</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Beneath the cross of Jesus I fain would take my stand,</p>
+    <p class="lyric-line">The shadow of a mighty rock within a weary land;</p>
+    <p class="lyric-line">A home within the wilderness, a rest upon the way,</p>
+    <p class="lyric-line">From the burning of the noontide heat, and the burden of the day.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Upon that cross of Jesus mine eye at times can see</p>
+    <p class="lyric-line">The very dying form of One who suffered there for me;</p>
+    <p class="lyric-line">And from my stricken heart with tears two wonders I confess,</p>
+    <p class="lyric-line">The wonders of redeeming love and my unworthiness.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">I take, O cross, thy shadow for my abiding place;</p>
+    <p class="lyric-line">I ask no other sunshine than the sunshine of His face;</p>
+    <p class="lyric-line">Content to let the world go by, to know no gain or loss,</p>
+    <p class="lyric-line">My sinful self my only shame, my glory all the cross.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="come-thou-fount-of-every-blessing">
+  <h2 class="song-title">Come Thou Fount Of Every Blessing</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Come, Thou Fount of every blessing, tune my heart to sing Thy grace;</p>
+    <p class="lyric-line">Streams of mercy, never ceasing, call for songs of loudest praise.</p>
+    <p class="lyric-line">Teach me some melodious sonnet, sung by flaming tongues above;</p>
+    <p class="lyric-line">Praise the mount! I&#x27;m fixed upon it, mount of Thy redeeming love.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Here I find my greatest treasure; hither by Thy help I&#x27;ve come;</p>
+    <p class="lyric-line">And I hope, by Thy good pleasure, safely to arrive at home.</p>
+    <p class="lyric-line">Prone to wander, Lord, I feel it, prone to leave the God I love;</p>
+    <p class="lyric-line">Here&#x27;s my heart, O take and seal it; seal it for Thy courts above.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Jesus sought me when a stranger, wandering from the fold of God;</p>
+    <p class="lyric-line">He, to rescue me from danger, bought me with His precious blood.</p>
+    <p class="lyric-line">Teach me ever to adore Thee, may I still Thy goodness prove;</p>
+    <p class="lyric-line">While the hope of endless glory fills my heart with joy and love.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">O to grace how great a debtor daily I&#x27;m constrained to be;</p>
+    <p class="lyric-line">Let Thy goodness, like a fetter, bind my wandering heart to Thee.</p>
+    <p class="lyric-line">Prone to wander, Lord, I feel it, prone to leave the God I love;</p>
+    <p class="lyric-line">Here&#x27;s my heart, O take and seal it; seal it for Thy courts above.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="come-ye-sinners-poor-and-needy">
+  <h2 class="song-title">Come Ye Sinners, Poor And Needy</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Come, ye sinners, poor and needy,</p>
+    <p class="lyric-line">Weak and wounded, sick and sore;</p>
+    <p class="lyric-line">Jesus ready stands to save you,</p>
+    <p class="lyric-line">Full of pity, love, and power.</p>
+    <p class="lyric-line">He is able, He is able,</p>
+    <p class="lyric-line">He is able, doubt no more;</p>
+    <p class="lyric-line">He is able, He is able,</p>
+    <p class="lyric-line">He is able, doubt no more.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Come, ye needy, come and welcome,</p>
+    <p class="lyric-line">God&#x27;s free bounty glorify;</p>
+    <p class="lyric-line">True belief and true repentance,</p>
+    <p class="lyric-line">Every grace that brings you nigh.</p>
+    <p class="lyric-line">Without money, without money</p>
+    <p class="lyric-line">Come to Jesus Christ and buy;</p>
+    <p class="lyric-line">Without money, without money</p>
+    <p class="lyric-line">Come to Jesus Christ and buy.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Come, ye weary, heavy laden,</p>
+    <p class="lyric-line">Lost and ruined by the fall;</p>
+    <p class="lyric-line">If you tarry till you&#x27;re better,</p>
+    <p class="lyric-line">You will never come at all.</p>
+    <p class="lyric-line">Not the righteous, not the righteous,</p>
+    <p class="lyric-line">Sinners Jesus came to call;</p>
+    <p class="lyric-line">Not the righteous, not the righteous,</p>
+    <p class="lyric-line">Sinners Jesus came to call.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Let not conscience make you linger,</p>
+    <p class="lyric-line">Nor of fitness fondly dream;</p>
+    <p class="lyric-line">All the fitness He requireth</p>
+    <p class="lyric-line">Is to feel your need of Him.</p>
+    <p class="lyric-line">This He gives you, this He gives you,</p>
+    <p class="lyric-line">&#x27;Tis the Spirit&#x27;s rising beam;</p>
+    <p class="lyric-line">This He gives you, this He gives you,</p>
+    <p class="lyric-line">&#x27;Tis the Spirit&#x27;s rising beam.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="crown-him-with-many-crowns">
+  <h2 class="song-title">Crown Him With Many Crowns</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Crown Him with many crowns, the Lamb upon His throne.</p>
+    <p class="lyric-line">Hark! How the heavenly anthem drowns all music but its own.</p>
+    <p class="lyric-line">Awake, my soul, and sing of Him who died for thee,</p>
+    <p class="lyric-line">And hail Him as thy matchless King through all eternity.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Crown Him the Lord of love, behold His hands and side,</p>
+    <p class="lyric-line">Rich wounds, yet visible above, in beauty glorified.</p>
+    <p class="lyric-line">No angel in the sky can fully bear that sight,</p>
+    <p class="lyric-line">But downward bends his burning eye at mysteries so bright.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Crown Him the Lord of life, who triumphed o&#x27;er the grave,</p>
+    <p class="lyric-line">Who rose victorious in the strife for those He came to save.</p>
+    <p class="lyric-line">His glories now we sing, who died and rose on high,</p>
+    <p class="lyric-line">Who died eternal life to bring, and lives that death may die.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Crown Him the Lord of peace, whose power a scepter sways</p>
+    <p class="lyric-line">From pole to pole, that wars may cease, and all be prayer and praise.</p>
+    <p class="lyric-line">Crown Him with many crowns, as thrones before Him fall;</p>
+    <p class="lyric-line">Crown Him, ye kings, with many crowns, for He is King of all.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="great-is-thy-faithfulness">
+  <h2 class="song-title">Great Is Thy Faithfulness</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Great is Thy faithfulness, O God my Father;</p>
+    <p class="lyric-line">There is no shadow of turning with Thee.</p>
+    <p class="lyric-line">Thou changest not, Thy compassions, they fail not;</p>
+    <p class="lyric-line">As Thou hast been, Thou forever wilt be.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Great is Thy faithfulness! Great is Thy faithfulness!</p>
+    <p class="lyric-line">Morning by morning new mercies I see;</p>
+    <p class="lyric-line">All I have needed Thy hand hath provided;</p>
+    <p class="lyric-line">Great is Thy faithfulness, Lord, unto me!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Summer and winter, and springtime and harvest,</p>
+    <p class="lyric-line">Sun, moon, and stars in their courses above</p>
+    <p class="lyric-line">Join with all nature in manifold witness</p>
+    <p class="lyric-line">To Thy great faithfulness, mercy, and love.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Great is Thy faithfulness! Great is Thy faithfulness!</p>
+    <p class="lyric-line">Morning by morning new mercies I see;</p>
+    <p class="lyric-line">All I have needed Thy hand hath provided;</p>
+    <p class="lyric-line">Great is Thy faithfulness, Lord, unto me!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Pardon for sin and a peace that endureth,</p>
+    <p class="lyric-line">Thine own dear presence to cheer and to guide;</p>
+    <p class="lyric-line">Strength for today and bright hope for tomorrow,</p>
+    <p class="lyric-line">Blessings all mine, with ten thousand beside!</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Great is Thy faithfulness! Great is Thy faithfulness!</p>
+    <p class="lyric-line">Morning by morning new mercies I see;</p>
+    <p class="lyric-line">All I have needed Thy hand hath provided;</p>
+    <p class="lyric-line">Great is Thy faithfulness, Lord, unto me!</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="how-great-thou-art">
+  <h2 class="song-title">How Great Thou Art</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">O Lord my God, when I in awesome wonder</p>
+    <p class="lyric-line">Consider all the worlds Thy hands have made,</p>
+    <p class="lyric-line">I see the stars, I hear the rolling thunder,</p>
+    <p class="lyric-line">Thy power throughout the universe displayed.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">When through the woods and forest glades I wander</p>
+    <p class="lyric-line">And hear the birds sing sweetly in the trees;</p>
+    <p class="lyric-line">When I look down from lofty mountain grandeur</p>
+    <p class="lyric-line">And hear the brook and feel the gentle breeze.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">And when I think that God, His Son not sparing,</p>
+    <p class="lyric-line">Sent Him to die, I scarce can take it in;</p>
+    <p class="lyric-line">That on the cross, my burden gladly bearing,</p>
+    <p class="lyric-line">He bled and died to take away my sin.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">When Christ shall come with shout of acclamation</p>
+    <p class="lyric-line">And take me home, what joy shall fill my heart!</p>
+    <p class="lyric-line">Then I shall bow in humble adoration,</p>
+    <p class="lyric-line">And there proclaim, &quot;My God, how great Thou art!&quot;</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+    <p class="lyric-line">Then sings my soul, my Savior God, to Thee:</p>
+    <p class="lyric-line">How great Thou art! How great Thou art!</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="how-marvelous-i-stand-amazed">
+  <h2 class="song-title">How Marvelous (I Stand Amazed)</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">I stand amazed in the presence</p>
+    <p class="lyric-line">Of Jesus the Nazarene,</p>
+    <p class="lyric-line">And wonder how He could love me,</p>
+    <p class="lyric-line">A sinner, condemned, unclean.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">How marvelous! How wonderful!</p>
+    <p class="lyric-line">And my song shall ever be:</p>
+    <p class="lyric-line">How marvelous! How wonderful</p>
+    <p class="lyric-line">Is my Savior&#x27;s love for me!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">For me it was in the garden</p>
+    <p class="lyric-line">He prayed, &quot;Not My will, but Thine.&quot;</p>
+    <p class="lyric-line">He had no tears for His own griefs,</p>
+    <p class="lyric-line">But sweat drops of blood for mine.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">How marvelous! How wonderful!</p>
+    <p class="lyric-line">And my song shall ever be:</p>
+    <p class="lyric-line">How marvelous! How wonderful</p>
+    <p class="lyric-line">Is my Savior&#x27;s love for me!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">He took my sins and my sorrows,</p>
+    <p class="lyric-line">He made them His very own;</p>
+    <p class="lyric-line">He bore the burden to Calvary,</p>
+    <p class="lyric-line">And suffered and died alone.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">How marvelous! How wonderful!</p>
+    <p class="lyric-line">And my song shall ever be:</p>
+    <p class="lyric-line">How marvelous! How wonderful</p>
+    <p class="lyric-line">Is my Savior&#x27;s love for me!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">When with the ransomed in glory</p>
+    <p class="lyric-line">His face I at last shall see,</p>
+    <p class="lyric-line">&#x27;Twill be my joy through the ages</p>
+    <p class="lyric-line">To sing of His love for me.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">How marvelous! How wonderful!</p>
+    <p class="lyric-line">And my song shall ever be:</p>
+    <p class="lyric-line">How marvelous! How wonderful</p>
+    <p class="lyric-line">Is my Savior&#x27;s love for me!</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="it-is-well-with-my-soul">
+  <h2 class="song-title">It Is Well With My Soul</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">When peace, like a river, attendeth my way,</p>
+    <p class="lyric-line">When sorrows like sea billows roll;</p>
+    <p class="lyric-line">Whatever my lot, Thou hast taught me to say,</p>
+    <p class="lyric-line">It is well, it is well with my soul.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">It is well (it is well) with my soul (with my soul),</p>
+    <p class="lyric-line">It is well, it is well with my soul.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Though Satan should buffet, though trials should come,</p>
+    <p class="lyric-line">Let this blest assurance control,</p>
+    <p class="lyric-line">That Christ has regarded my helpless estate,</p>
+    <p class="lyric-line">And hath shed His own blood for my soul.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">It is well (it is well) with my soul (with my soul),</p>
+    <p class="lyric-line">It is well, it is well with my soul.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">My sin, O the bliss of this glorious thought!</p>
+    <p class="lyric-line">My sin, not in part, but the whole,</p>
+    <p class="lyric-line">Is nailed to the cross, and I bear it no more;</p>
+    <p class="lyric-line">Praise the Lord, praise the Lord, O my soul!</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">It is well (it is well) with my soul (with my soul),</p>
+    <p class="lyric-line">It is well, it is well with my soul.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">And, Lord, haste the day when my faith shall be sight,</p>
+    <p class="lyric-line">The clouds be rolled back as a scroll;</p>
+    <p class="lyric-line">The trump shall resound, and the Lord shall descend,</p>
+    <p class="lyric-line">Even so, it is well with my soul.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">It is well (it is well) with my soul (with my soul),</p>
+    <p class="lyric-line">It is well, it is well with my soul.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="jesus-i-my-cross-have-taken">
+  <h2 class="song-title">Jesus, I My Cross Have Taken</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Jesus, I my cross have taken, all to leave and follow Thee;</p>
+    <p class="lyric-line">Destitute, despised, forsaken, Thou from hence my all shalt be.</p>
+    <p class="lyric-line">Perish every fond ambition, all I&#x27;ve sought, or hoped, or known;</p>
+    <p class="lyric-line">Yet how rich is my condition! God and heaven are still my own.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Let the world despise and leave me, they have left my Savior, too;</p>
+    <p class="lyric-line">Human hearts and looks deceive me; Thou art not, like them, untrue.</p>
+    <p class="lyric-line">O while Thou dost smile upon me, God of wisdom, love, and might,</p>
+    <p class="lyric-line">Foes may hate and friends disown me, show Thy face and all is bright.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Man may trouble and distress me, &#x27;twill but drive me to Thy breast;</p>
+    <p class="lyric-line">Life with trials hard may press me, heaven will bring me sweeter rest.</p>
+    <p class="lyric-line">O, &#x27;tis not in grief to harm me while Thy love is left to me;</p>
+    <p class="lyric-line">O, &#x27;twere not in joy to charm me, were that joy unmixed with Thee.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Go, then, earthly fame and treasure! Come disaster, scorn, and pain!</p>
+    <p class="lyric-line">In Thy service, pain is pleasure; with Thy favor, loss is gain.</p>
+    <p class="lyric-line">I have called Thee Abba Father; I have stayed my heart on Thee:</p>
+    <p class="lyric-line">Storms may howl, and clouds may gather, all must work for good to me.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 5</p>
+    <p class="lyric-line">Soul, then know thy full salvation; rise o&#x27;er sin, and fear, and care;</p>
+    <p class="lyric-line">Joy to find in every station something still to do or bear.</p>
+    <p class="lyric-line">Think what Spirit dwells within thee; think what Father&#x27;s smiles are thine;</p>
+    <p class="lyric-line">Think that Jesus died to win thee: child of heaven, canst thou repine?</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 6</p>
+    <p class="lyric-line">Haste thee on from grace to glory, armed by faith, and winged by prayer;</p>
+    <p class="lyric-line">Heaven&#x27;s eternal day&#x27;s before thee, God&#x27;s own hand shall guide thee there.</p>
+    <p class="lyric-line">Soon shall close thy earthly mission, soon shall pass thy pilgrim days;</p>
+    <p class="lyric-line">Hope shall change to glad fruition, faith to sight, and prayer to praise.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="leaning-on-the-everlasting-arms">
+  <h2 class="song-title">Leaning On The Everlasting Arms</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">What a fellowship, what a joy divine,</p>
+    <p class="lyric-line">Leaning on the everlasting arms;</p>
+    <p class="lyric-line">What a blessedness, what a peace is mine,</p>
+    <p class="lyric-line">Leaning on the everlasting arms.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Leaning, leaning, safe and secure from all alarms;</p>
+    <p class="lyric-line">Leaning, leaning, leaning on the everlasting arms.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">O how sweet to walk in this pilgrim way,</p>
+    <p class="lyric-line">Leaning on the everlasting arms;</p>
+    <p class="lyric-line">O how bright the path grows from day to day,</p>
+    <p class="lyric-line">Leaning on the everlasting arms.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Leaning, leaning, safe and secure from all alarms;</p>
+    <p class="lyric-line">Leaning, leaning, leaning on the everlasting arms.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">What have I to dread, what have I to fear,</p>
+    <p class="lyric-line">Leaning on the everlasting arms;</p>
+    <p class="lyric-line">I have blessed peace with my Lord so near,</p>
+    <p class="lyric-line">Leaning on the everlasting arms.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">Leaning, leaning, safe and secure from all alarms;</p>
+    <p class="lyric-line">Leaning, leaning, leaning on the everlasting arms.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="nothing-but-the-blood">
+  <h2 class="song-title">Nothing But The Blood</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">What can wash away my sin?</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+    <p class="lyric-line">What can make me whole again?</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">O precious is the flow</p>
+    <p class="lyric-line">That makes me white as snow;</p>
+    <p class="lyric-line">No other fount I know,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">This is all my hope and peace,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus;</p>
+    <p class="lyric-line">This is all my righteousness,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">O precious is the flow</p>
+    <p class="lyric-line">That makes me white as snow;</p>
+    <p class="lyric-line">No other fount I know,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Glory! Glory! This I sing,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus;</p>
+    <p class="lyric-line">All my praise for this I bring,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">O precious is the flow</p>
+    <p class="lyric-line">That makes me white as snow;</p>
+    <p class="lyric-line">No other fount I know,</p>
+    <p class="lyric-line">Nothing but the blood of Jesus.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="praise-to-the-lord-the-almighty">
+  <h2 class="song-title">Praise To The Lord, The Almighty</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Praise to the Lord, the Almighty, the King of creation!</p>
+    <p class="lyric-line">O my soul, praise Him, for He is your health and salvation!</p>
+    <p class="lyric-line">Let all who hear now to His temple draw near,</p>
+    <p class="lyric-line">Joining in glad adoration!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Praise to the Lord, who over all things so wondrously reigning,</p>
+    <p class="lyric-line">And, as on wings of an eagle, uplifting, sustaining.</p>
+    <p class="lyric-line">Have you not seen all that is needful has been</p>
+    <p class="lyric-line">Sent by His gracious ordaining?</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Praise to the Lord, who will prosper your work and defend you;</p>
+    <p class="lyric-line">Surely His goodness and mercy shall daily attend you.</p>
+    <p class="lyric-line">Ponder anew what the Almighty can do,</p>
+    <p class="lyric-line">As with His love He befriends you!</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Praise to the Lord! O let all that is in me adore Him!</p>
+    <p class="lyric-line">All that has life and breath, come now with praises before Him!</p>
+    <p class="lyric-line">Let the amen sound from His people again.</p>
+    <p class="lyric-line">Gladly forever adore Him!</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+
+<section class="song" id="there-is-power-in-the-blood">
+  <h2 class="song-title">There Is Power In The Blood</h2>
+  <div class="stanza">
+    <p class="section-label">Verse 1</p>
+    <p class="lyric-line">Would you be free from your burden of sin?</p>
+    <p class="lyric-line">There&#x27;s power in the blood, power in the blood;</p>
+    <p class="lyric-line">Would you o&#x27;er evil a victory win?</p>
+    <p class="lyric-line">There&#x27;s wonderful power in the blood.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the blood of the Lamb;</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the precious blood of the Lamb.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 2</p>
+    <p class="lyric-line">Would you be free from your passion and pride?</p>
+    <p class="lyric-line">There&#x27;s power in the blood, power in the blood;</p>
+    <p class="lyric-line">Come for a cleansing to Calvary&#x27;s tide;</p>
+    <p class="lyric-line">There&#x27;s wonderful power in the blood.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the blood of the Lamb;</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the precious blood of the Lamb.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 3</p>
+    <p class="lyric-line">Would you be whiter, much whiter than snow?</p>
+    <p class="lyric-line">There&#x27;s power in the blood, power in the blood;</p>
+    <p class="lyric-line">Sin stains are lost in its life-giving flow;</p>
+    <p class="lyric-line">There&#x27;s wonderful power in the blood.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the blood of the Lamb;</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the precious blood of the Lamb.</p>
+  </div>
+  <div class="stanza">
+    <p class="section-label">Verse 4</p>
+    <p class="lyric-line">Would you do service for Jesus your King?</p>
+    <p class="lyric-line">There&#x27;s power in the blood, power in the blood;</p>
+    <p class="lyric-line">Would you live daily His praises to sing?</p>
+    <p class="lyric-line">There&#x27;s wonderful power in the blood.</p>
+  </div>
+  <div class="stanza chorus">
+    <p class="section-label">Chorus</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the blood of the Lamb;</p>
+    <p class="lyric-line">There is power, power, wonder-working power</p>
+    <p class="lyric-line">In the precious blood of the Lamb.</p>
+  </div>
+  <p class="back-to-top"><a href="#top">↑ Back to top</a></p>
+</section>
+    </main>
+  </div>
+</body>
+</html>
